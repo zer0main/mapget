@@ -10,7 +10,6 @@ describe("mapget", function()
 
     it("downloads tile", function()
         local mapget = assert(require 'mapget')
-        local socket = assert(require 'socket.http')
         local options = {
             map_type = 'map',
             v = '4.40.1',
@@ -20,13 +19,12 @@ describe("mapget", function()
             scale = '1',
             lang = 'ru_RU',
         }
-        local data = assert(mapget.getTile(socket, options))
+        local data = assert(mapget.getTile(options))
     end)
 
     it("downloads tile correctly", function()
         local mapget = assert(require 'mapget')
         local magick = assert(require 'magick')
-        local socket = assert(require 'socket.http')
         local options = {
             map_type = 'map',
             v = '4.40.1',
@@ -36,7 +34,7 @@ describe("mapget", function()
             scale = '1',
             lang = 'ru_RU',
         }
-        local data = assert(mapget.getTile(socket, options))
+        local data = assert(mapget.getTile(options))
         local output = io.open("data", "w")
         output:write(data)
         output:close()

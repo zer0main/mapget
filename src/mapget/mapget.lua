@@ -4,7 +4,8 @@
 
 local mapget = {}
 
-function mapget.getTile(socket, options)
+function mapget.getTile(options)
+    local http = require('socket.http')
     local subdomain = ''
     if options.map_type == 'map' then
         subdomain = 'vec'
@@ -23,7 +24,7 @@ function mapget.getTile(socket, options)
         options.scale,
         options.lang
     )
-    local data, inf, spec = socket.request(url)
+    local data, inf, spec = http.request(url)
     return data
 end
 
